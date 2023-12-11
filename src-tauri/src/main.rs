@@ -61,7 +61,7 @@ fn update_refresh_rate(refresh_rate: u64) {
 fn main() {
     let bus_ids = vec![Uuid::new_v4(), Uuid::new_v4()];
     for bus_id in bus_ids {
-        let global_data = GLOBAL_DATA.clone();
+        let global_data: Arc<Mutex<GlobalData>> = GLOBAL_DATA.clone();
         thread::spawn(move || {
             let mut increasing = true;
             const PERIOD: u64 = 20; // 5ms
